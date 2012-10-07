@@ -1,0 +1,8 @@
+#!/bin/sh
+
+xvfb_path=/usr/pbi/xvfb-$(uname -m)
+tmpfile=$(mktemp /tmp/.XXXXXX)
+
+grep -v 'xvfb_' /etc/rc.conf > ${tmpfile}
+cat ${xvfb_path}/etc/rc.conf >> ${tmpfile}
+mv ${tmpfile} /etc/rc.conf
